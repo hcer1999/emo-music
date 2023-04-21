@@ -1,0 +1,82 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "网抑云音乐"
+			}
+		}, {
+			"path": "pages/boke/boke",
+			"style": {
+				"navigationBarTitleText": "播客",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/guanzhu/guanzhu",
+			"style": {
+				"navigationBarTitleText": "关注",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/shequ/shequ",
+			"style": {
+				"navigationBarTitleText": "社区",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "网抑云音乐",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#ea4335",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"iconWidth": "35px",
+		"height":"62px",
+		"borderStyle":"white",
+		"spacing": "1px",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tabbar/index.png",
+			"selectedIconPath": "static/tabbar/index-h.png",
+			"text": "发现"
+		}, {
+			"pagePath": "pages/boke/boke",
+			"iconPath": "static/tabbar/boke.png",
+			"selectedIconPath": "static/tabbar/boke-h.png",
+			"text": "播客"
+		}, {
+			"pagePath": "pages/my/my",
+			"iconPath": "static/tabbar/my.png",
+			"selectedIconPath": "static/tabbar/my-h.png",
+			"text": "我的"
+		}, {
+			"pagePath": "pages/guanzhu/guanzhu",
+			"iconPath": "static/tabbar/guanzhu.png",
+			"selectedIconPath": "static/tabbar/guanzhu-h.png",
+			"text": "关注"
+		}, {
+			"pagePath": "pages/shequ/shequ",
+			"iconPath": "static/tabbar/shequ.png",
+			"selectedIconPath": "static/tabbar/shequ-h.png",
+			"text": "社区"
+		}]
+	},
+	"uniIdRouter": {},
+	// 如果您是通过uni_modules形式引入uView，可以忽略此配置
+	"easycom": {
+		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	}
+}
