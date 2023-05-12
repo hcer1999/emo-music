@@ -9,10 +9,13 @@
 			</view>
 		</view>
 		<scroll-view scroll-x class="scroll-list">
-			<view v-for="item in rPlayList" class="recommendedPlayListItem" :key="item.creativeId" @click="playListClick()">
+			<view v-for="item in rPlayList" class="recommendedPlayListItem" :key="item.creativeId"
+				@click="playListClick(item.creativeId)">
 				<image :src="item.uiElement.image.imageUrl"></image>
-				<text>{{item.uiElement.mainTitle.title}}</text>
-				<text class="playCount">{{item.resources[0].resourceExtInfo.playCount | playcount}}</text>
+				<i class="iconfont icon-bofang1 playIcon"></i>
+				<u--text :text="item.uiElement.mainTitle.title"></u--text>
+				<text class="playCount"><i
+						class="iconfont icon-bofang1"></i>{{item.resources[0].resourceExtInfo.playCount | playcount}}</text>
 			</view>
 		</scroll-view>
 	</view>
@@ -31,13 +34,17 @@
 			}
 		},
 		created() {},
-		methods:{
-			playListClick(){
-				uni.showToast({
-					title: '正在开发中...',
-					icon: 'none',
-					duration: 1000
-				});
+		methods: {
+			playListClick(id) {
+				// uni.showToast({
+				// 	title: '正在开发中...',
+				// 	icon: 'none',
+				// 	duration: 1000
+				// });
+				uni.navigateTo({
+					url: "/pages/playList/playList?id=" + id,
+				})
+				// console.log(id);
 			}
 		},
 		filters: {
@@ -62,14 +69,22 @@
 			}
 
 			.recommendedPlayListItem {
-				height: 400rpx;
-				margin: 20rpx;
+				height: 360rpx;
+				margin: 20rpx 0rpx 20rpx 40rpx;
 				position: relative;
+
+				.playIcon {
+					position: absolute;
+					bottom: 130rpx;
+					right: 20rpx;
+					color: #fff;
+					font-size: 50rpx;
+				}
 
 				uni-image {
 					border-radius: 30rpx;
-					width: 300rpx;
-					height: 300rpx;
+					width: 240rpx;
+					height: 240rpx;
 
 				}
 
@@ -103,7 +118,7 @@
 
 
 		.recommendedPlayListTitle {
-			margin-left: 30rpx;
+			margin-left: 20rpx;
 			font-size: 40rpx;
 			font-weight: 200px;
 

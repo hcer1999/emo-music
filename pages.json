@@ -3,31 +3,93 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "网抑云音乐"
+				"navigationBarTitleText": "网抑云音乐",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/boke/boke",
 			"style": {
 				"navigationBarTitleText": "播客",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/guanzhu/guanzhu",
 			"style": {
 				"navigationBarTitleText": "关注",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/shequ/shequ",
 			"style": {
 				"navigationBarTitleText": "社区",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/playList/playList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/toplist/toplist",
+			"style": {
+				"navigationBarTitleText": "排行榜",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"searchInput": {
+				// 			"autoFocus": true,
+				// 			"placeholder": "可能 - 陈翔",
+				// 			"align": "left",
+				// 			"borderRadius": "12px",
+				// 			"backgroundColor": "#f2f2f2",
+				// 			"placeholderColor": "#989ba1"
+
+				// 		},
+				// 		"buttons": [{
+				// 				"type": "none",
+				// 				"text": "搜索",
+				// 				"fontSize": "14px",
+				// 				"float": "right",
+				// 				"width": "70px"
+
+
+				// 			}
+
+				// 		],
+				// 		"splitLine": true
+				// 	}
+				// }
+			}
+		}, {
+			"path": "pages/searchResult/searchResult",
+			"style": {
+				"navigationBarTitleText": "搜索结果",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
 
 		}
@@ -36,7 +98,8 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "网抑云音乐",
 		"navigationBarBackgroundColor": "#fff",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#7A7E83",
@@ -44,8 +107,8 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"iconWidth": "35px",
-		"height":"62px",
-		"borderStyle":"white",
+		"height": "62px",
+		"borderStyle": "white",
 		"spacing": "1px",
 		"list": [{
 			"pagePath": "pages/index/index",
@@ -78,5 +141,13 @@
 	// 如果您是通过uni_modules形式引入uView，可以忽略此配置
 	"easycom": {
 		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
 	}
 }

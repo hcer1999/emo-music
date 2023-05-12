@@ -1,10 +1,13 @@
 <template>
-	<view class="index">
+	<view class="main">
+		<!-- #ifdef APP-PLUS -->
+		<StatusBar></StatusBar>
+		<!-- #endif -->
 		<!-- 搜索部分 -->
 		<view class="search">
 			<i style="font-size:60rpx;" class="iconfont icon-list"></i>
-			<u--input placeholder="周杰伦" prefixIcon="search" suffixIcon="scan"
-				prefixIconStyle="font-size: 25px;color: #909399"></u--input>
+			<u--input placeholder="从这里发起搜索" prefixIcon="search" suffixIcon="scan"
+				prefixIconStyle="font-size: 25px;color: #909399" @focus="toSearch()"></u--input>
 			<i style="font-size: 60rpx; margin: 0 20rpx 0  10rpx;" class="iconfont icon-mianfei"></i>
 			<i style="font-size: 60rpx;" class="iconfont icon-maikefeng"></i>
 		</view>
@@ -16,8 +19,8 @@
 		<RecommendedPlaylist :rPlayList="playList"></RecommendedPlaylist>
 		<!-- 热门播客 -->
 		<TopPodcasts :data="topPodcastsList"></TopPodcasts>
-		<text style="display:block;height: 300rpx;text-align: center;margin-top: 100rpx;">------有待更新------</text>
-		<MiniPlay></MiniPlay>
+		<!-- <text style="display:block;height: 300rpx;text-align: center;margin-top: 100rpx;">------有待更新------</text> -->
+		<MiniPlay :bottom="100"></MiniPlay>
 		<!-- <Tabbar></Tabbar> -->
 		<!-- <u-notify message="获取数据失败!" type="error" :show="isShowError"></u-notify> -->
 	</view>
@@ -30,6 +33,9 @@
 	import indexSwipe from "@/components/index/indexSwipe.vue"
 	import TopPodcasts from "@/components/index/TopPodcasts.vue"
 	import MiniPlay from "@/components/MiniPlay.vue"
+	import http from "@/utils/request/index.js"
+	// 导入空出状态栏位置的组件
+	import StatusBar from "@/components/StatusBar.vue"
 	export default {
 		data() {
 			return {
@@ -54,18 +60,11 @@
 		},
 		methods: {
 			async init() {
-				// const {
-				// 	data: res
-				// } = await this.$axios.get('/homepage/block/page')
+				const res = await http('common.IndexData')
+
 				uni.showLoading({
 					title: '加载中...'
 				});
-				const {
-					data: res
-				} = await this.$http({
-					url:'/homepage/block/page',
-					methods: "GET"
-				})
 				if (res.code !== 200) {
 					uni.hideLoading()
 					uni.showToast({
@@ -73,7 +72,7 @@
 						icon: 'error',
 						duration: 1000
 					});
-					return 
+					return
 				}
 				uni.hideLoading()
 				this.indexData = res
@@ -95,6 +94,11 @@
 			async getUserInfo() {
 
 			},
+			toSearch() {
+				uni.navigateTo({
+					url: "/pages/search/search"
+				})
+			}
 
 		},
 		components: {
@@ -103,24 +107,26 @@
 			RecommendedPlaylist,
 			indexSwipe,
 			TopPodcasts,
-			MiniPlay
+			MiniPlay,
+			StatusBar
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.main {
-		margin-bottom: 120rpx;
+		margin-bottom: 182rpx;
 	}
 
 	.search {
 		display: flex;
 		align-items: center;
-		padding: 0 10rpx;
-		height: 100rpx;
+		margin: 30rpx 10rpx;
+		// padding: 0 10rpx;
+		height: 60rpx;
 
 		.u-input {
-			height: 60rpx;
+			height: 50rpx;
 			margin: 0 20rpx;
 			border-radius: 40rpx;
 

@@ -1,24 +1,30 @@
 <template>
 	<view>
-		直播
-		<Tabbar></Tabbar>
+		<!-- #ifdef APP-PLUS -->
+		<StatusBar></StatusBar>
+		<!-- #endif -->
+		社区
 	</view>
 </template>
 
 <script>
-		import Tabbar from "@/components/Tabbar.vue"
+	// 导入空出状态栏位置的组件
+	import StatusBar from "@/components/StatusBar.vue"
 	export default {
 		data() {
 			return {
-				
-			};
+
+			}
 		},
-		components:{
-			Tabbar
+		methods: {
+
+		},
+		components: {
+			StatusBar
 		}
 	}
 </script>
 
-<style lang="scss">
+<style>
 
 </style>
